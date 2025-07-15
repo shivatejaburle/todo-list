@@ -1,11 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Todo List</title>
-    </head>
-    <body>
-        <h1>Todo List</h1>
-    </body>
-</html>
+{% extends 'base_master.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <img src="{% static 'tasks/img/logo.png' %}" alt="logo" width="250" class="img-fluid mb-4">
+    <h1 class="text-body-emphasis mt-2">ToDo List</h1>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+     Your Tasks, Your Way.
+    </p>
+    {% if not request.user.is_authenticated %}
+    <div class="d-inline-flex gap-2 mb-5">
+      <button 
+        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" 
+        type="button" 
+        onclick="window.location.href='#'"
+      >
+        Get Started
+      </button>
+    </div>
+    {% else %}
+    <div class="d-inline-flex gap-2 mb-5">
+      <button 
+        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" 
+        type="button" 
+        onclick="window.location.href='#'"
+      >
+      Add Tasks
+      </button>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
