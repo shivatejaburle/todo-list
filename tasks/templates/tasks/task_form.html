@@ -1,0 +1,19 @@
+{% extends 'base_master.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container">
+    <h1>Create Task</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        
+        {% if form_type != 'update' %}
+            <button type="submit" class="btn btn-primary">Create Task</button>
+        {% else %}
+            <button type="submit" class="btn btn-primary">Update Task</button>
+        {% endif %}
+        <a class="btn btn-secondary" href="{% url 'tasks:task_list' %}" role="button">Back to Task List</a>
+    </form>
+    
+</div>
+{% endblock %}

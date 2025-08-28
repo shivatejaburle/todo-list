@@ -1,0 +1,20 @@
+{% extends 'base_master.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h1>Delete Task</h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Are you sure want to delete the <span class="text-danger">"{{task.title}}"</span> task ?</h3>
+        <p class="mt-4 fw-bold">Title :</p>
+        <p>{{task.title}}</p>
+        <p class="mt-4 fw-bold">Description :</p>
+        <p>{{task.description}}</p>
+        <p class="mt-4">
+            <button type="submit" class="btn btn-danger">Yes, I am sure!</button>
+            <button type="button" class="btn btn-secondary"
+                onclick = "window.location='{% url 'tasks:task_list_complete' %}'">No, take me back</button>
+        </p>
+    </form>
+</div>
+{% endblock %}
