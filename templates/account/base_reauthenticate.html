@@ -1,0 +1,25 @@
+{% extends 'account/base_entrance.html' %}
+{% load allauth %}
+
+{% block title %}
+    Confirm Access
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>Confirm Access</h1>
+        <p class="fs-5 text-danger">Please reauthenticate to safeguard your account.</p>
+        
+        {% block reauthenticate_content %}{% endblock %}
+
+        {% if reauthentication_alternatives %}
+            <hr>
+            <h2>Alternative options</h2>
+            <div class="list-group">
+                {% for alt in reauthentication_alternatives %}
+                    <a href="{{ alt.url }}" class="list-group-item list-group-item-action">{{ alt.description }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}
