@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView, CreateView, UpdateView, RedirectView, DeleteView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import TemplateView, ListView, CreateView, UpdateView, RedirectView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from .models import Task
 from .forms import TaskForm
@@ -29,6 +29,13 @@ class CompletedTaskListView(ListView):
     def get_queryset(self):
         queryset = self.model.objects.filter(status = "Completed")
         return queryset
+    
+# Task Detail View
+class TaskDetailView(DetailView):
+    template_name = 'tasks/task_detail.html'
+    model = Task
+    context_object_name = 'task'
+    pk_url_kwarg = 'pk'
 
 # Create Task View
 class CreateTaskView(CreateView):

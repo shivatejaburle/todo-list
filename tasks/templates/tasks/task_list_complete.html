@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h1>Task List</h1>
-    <div class="table-responsive">
+    <div class="table-responsive d-none d-sm-block">
         <table class="table">
             <thead>
                 <tr>
@@ -38,6 +38,21 @@
             </tbody>
         </table>
     </div>
-    <a class="btn btn-sm btn-secondary" href="{% url 'tasks:task_list' %}" role="button">View Tasks</a>
+    {% for task in tasks %}
+        <div class="card mt-2 d-sm-block d-md-none">
+            <div class="card-body">
+                <h5 class="card-title mb-3">{{ task.title }}</h5>
+                <p class="card-text"><strong>Description:</strong><br> {{ task.description }}</p>
+                <p class="card-text"><strong>Status:</strong><br> {{ task.status }}</p>
+                <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_restore' task.id %}" role="button">Restore Task</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info mt-3 d-sm-block d-md-none" role="alert">
+            Complete any of the task to view it here.
+        </div>
+    {% endfor %}
+    <a class="btn btn-sm btn-secondary mt-2 mb-4" href="{% url 'tasks:task_list' %}" role="button">View Tasks</a>
 </div>
 {% endblock %}
