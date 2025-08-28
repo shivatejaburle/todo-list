@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
+from datetime import datetime
 
 # Index View
 class IndexView(TemplateView):
@@ -16,7 +17,7 @@ class TaskListView(ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(status__in=["Created", "Updated"])
+        queryset = self.model.objects.filter(status__in=["Created", "Updated", "Restored"])
         return queryset
     
 # Completed Task List View
@@ -79,6 +80,7 @@ class UpdateTaskView(UpdateView):
         # Update the status of the record
         obj = form.save(commit = False)
         obj.status = "Updated"
+        obj.date = datetime.now()
         obj.save()
 
         messages.success(request, "Your task has been updated successfully.")
@@ -93,6 +95,7 @@ class CompleteTask(RedirectView):
         task = Task.objects.get(id=pk)
         # Update the status of the record
         task.status = "Completed"
+        task.date = datetime.now()
         task.save()
 
         messages.success(request, "Your task has been marked as finished.")
@@ -106,7 +109,8 @@ class RestoreTask(RedirectView):
     def get(self, request, pk):
         task = Task.objects.get(id=pk)
         # Update the status of the record
-        task.status = "Updated"
+        task.status = "Restored"
+        task.date = datetime.now()
         task.save()
 
         messages.success(request, "Your task has been restored.")

@@ -11,6 +11,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Status</th>
+                    <th>Date and Time</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,14 +21,15 @@
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         <td>{{ task.status }}</td>
+                        <td>{{ task.date }}</td>
                         <td>
-                            <a class="btn btn-sm btn-warning" href="{% url 'tasks:task_update' task.id %}" role="button">Update</a>
+                            <a class="btn btn-sm btn-warning" href="{% url 'tasks:task_update' task.id %}" role="button">Edit</a>
                             <a class="btn btn-sm btn-success" href="{% url 'tasks:task_complete' task.id %}" role="button">Complete</a>
                         </td>
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="4">
+                        <td colspan="5">
                             <div class="alert alert-info" role="alert">
                                 No tasks available.
                             </div>

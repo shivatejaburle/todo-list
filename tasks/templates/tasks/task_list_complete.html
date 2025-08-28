@@ -10,6 +10,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Status</th>
+                    <th>Date and Time</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -19,6 +20,7 @@
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         <td>{{ task.status }}</td>
+                        <td>{{ task.date }}</td>
                         <td>
                             <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_restore' task.id %}" role="button">Restore Task</a>
                             <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
@@ -26,7 +28,7 @@
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="4">
+                        <td colspan="5">
                             <div class="alert alert-info" role="alert">
                                 Complete any of the task to view it here.
                             </div>
