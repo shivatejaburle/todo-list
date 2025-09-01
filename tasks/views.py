@@ -17,7 +17,7 @@ class TaskListView(ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(status__in=["Created", "Updated", "Restored"]).order_by('due_date')
+        queryset = self.model.objects.filter(task_owner = self.request.user, status__in=["Created", "Updated", "Restored"]).order_by('due_date')
         return queryset
     
 # Completed Task List View
@@ -27,7 +27,7 @@ class CompletedTaskListView(ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(status = "Completed")
+        queryset = self.model.objects.filter(task_owner = self.request.user, status = "Completed")
         return queryset
     
 # Task Detail View
