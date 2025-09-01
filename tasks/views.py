@@ -54,6 +54,7 @@ class CreateTaskView(CreateView):
         
         # Add the status of the record
         obj = form.save(commit = False)
+        obj.task_owner = request.user
         obj.status = "Created"
         obj.save()
 
