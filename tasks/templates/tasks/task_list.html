@@ -60,6 +60,10 @@
                 <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
             </div>
         </div>
+    {% empty %}
+        <div class="alert alert-info mt-2 d-sm-block d-md-none" role="alert">
+            No tasks available.
+        </div>
     {% endfor %}
     <a class="btn btn-sm btn-secondary mt-2 mb-4" href="{% url 'tasks:task_list_complete' %}" role="button">View Complete Tasks</a>
 </div>

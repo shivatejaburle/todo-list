@@ -2,11 +2,12 @@
 {% block content %}
 <div class="container">
     <h1>{{ task.title }}</h1>
-    <div class="card">
+    <div class="card bg-danger-subtle">
         <div class="card-body">
             <p class="card-text"><strong>Description:</strong><br> {{ task.description }}</p>
             <p class="card-text"><strong>Status:</strong><br> {{ task.status }}</p>
-            <p class="card-text"><strong>Date and Time:</strong><br> {{ task.date }}</p>
+            <p class="card-text"><strong>Due Date:</strong><br> {{ task.due_date }}</p>
+            <p class="card-text"><strong>Last Modified:</strong><br> {{ task.date }}</p>
         </div>
     </div>
     <p class="mt-3">
