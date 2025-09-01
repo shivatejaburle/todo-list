@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <h1>{{ task.title }}</h1>
-    <div class="card bg-danger-subtle">
+    <div class="card {% if task.is_overdue %}bg-danger-subtle{% endif %}">
         <div class="card-body">
             <p class="card-text"><strong>Description:</strong><br> {{ task.description }}</p>
             <p class="card-text"><strong>Status:</strong><br> {{ task.status }}</p>
