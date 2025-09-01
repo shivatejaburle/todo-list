@@ -17,7 +17,7 @@ class TaskListView(ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(status__in=["Created", "Updated", "Restored"])
+        queryset = self.model.objects.filter(status__in=["Created", "Updated", "Restored"]).order_by('due_date')
         return queryset
     
 # Completed Task List View
@@ -41,7 +41,7 @@ class TaskDetailView(DetailView):
 class CreateTaskView(CreateView):
     template_name = 'tasks/task_form.html'
     model = Task
-    fields = ['title', 'description']
+    form_class = TaskForm
     success_url = reverse_lazy('tasks:task_list')
 
     def post(self, request):

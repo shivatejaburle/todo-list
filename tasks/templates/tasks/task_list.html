@@ -10,16 +10,22 @@
                 <tr>
                     <th>Title</th>
                     <th>Status</th>
-                    <th>Date and Time</th>
+                    <th>Due Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for task in tasks %}
-                    <tr>
+                    <tr class="{% if task.is_overdue %}table-danger{% endif %}">
                         <td>{{ task.title }}</td>
-                        <td>{{ task.status }}</td>
-                        <td>{{ task.date }}</td>
+                        <td>
+                            {% if task.is_overdue %}
+                                Overdue
+                            {% else %}
+                                {{ task.status }}
+                            {% endif %}
+                        </td>
+                        <td>{{ task.due_date }}</td>
                         <td>
                             <a class="btn btn-sm btn-warning" href="{% url 'tasks:task_detail' task.id %}" role="button">View Details</a>
                         </td>
@@ -38,11 +44,17 @@
     </div>
     {% for task in tasks %}
         <div class="card mt-2 d-sm-block d-md-none">
-            <div class="card-body">
+            <div class="card-body {% if task.is_overdue %}bg-danger-subtle{% endif %}">
                 <h5 class="card-title mb-3">{{ task.title }}</h5>
                 <p class="card-text"><strong>Description:</strong><br> {{ task.description }}</p>
                 <p class="card-text"><strong>Status:</strong><br> {{ task.status }}</p>
-                <p class="card-text"><strong>Date and Time:</strong><br> {{ task.date }}</p>
+                <p class="card-text"><strong>Due Date:</strong><br> 
+                    {% if task.is_overdue %}
+                        Overdue
+                    {% else %}
+                        {{ task.status }}
+                    {% endif %}
+                </p>
                 <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_update' task.id %}" role="button">Edit</a>
                 <a class="btn btn-sm btn-success" href="{% url 'tasks:task_complete' task.id %}" role="button">Complete</a>
                 <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
