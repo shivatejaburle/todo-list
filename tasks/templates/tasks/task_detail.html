@@ -14,7 +14,7 @@
         <a class="btn btn-secondary" href="{% url 'tasks:task_list' %}" role="button">Back</a>
         <a class="btn btn-primary" href="{% url 'tasks:task_update' task.id %}" role="button">Edit</a>
         <a class="btn btn-success" href="{% url 'tasks:task_complete' task.id %}" role="button">Complete</a>
-        <a class="btn btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
+        <a class="btn btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete</a>
     </p>
 </div>
 {% endblock %}

@@ -22,8 +22,8 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.due_date }}</td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_restore' task.id %}" role="button">Restore Task</a>
-                            <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_restore' task.id %}" role="button">Restore</a>
+                            <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete</a>
                         </td>
                     </tr>
                 {% empty %}
@@ -45,8 +45,8 @@
                 <p class="card-text"><strong>Description:</strong><br> {{ task.description }}</p>
                 <p class="card-text"><strong>Status:</strong><br> {{ task.status }}</p>
                 <p class="card-text"><strong>Due Date:</strong><br> {{ task.due_date }}</p>
-                <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_restore' task.id %}" role="button">Restore Task</a>
-                <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete Task</a>
+                <a class="btn btn-sm btn-primary" href="{% url 'tasks:task_restore' task.id %}" role="button">Restore</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'tasks:task_delete' task.id %}" role="button">Delete</a>
             </div>
         </div>
     {% empty %}
