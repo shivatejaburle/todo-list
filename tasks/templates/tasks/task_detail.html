@@ -1,9 +1,13 @@
 {% extends 'base_master.html' %}
+{% load static %}
+
+{% block title %}Task Detail{% endblock %}
 {% block content %}
 <div class="container">
     <h1>{{ task.title }}</h1>
     <div class="card {% if task.is_overdue %}bg-danger-subtle{% endif %}">
         <div class="card-body">
+            <img src="{% static 'tasks/img/logo.png' %}" alt="task-details" width="200" class="img-thumbnail rounded float-end border border-0 d-none d-sm-block">
             <p class="card-text"><strong>Description:</strong><br> {{ task.description }}</p>
             <p class="card-text"><strong>Status:</strong><br> {{ task.status }}</p>
             <p class="card-text"><strong>Due Date:</strong><br> {{ task.due_date }}</p>
