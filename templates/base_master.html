@@ -41,6 +41,11 @@
         <!-- Bootstrap JS -->
         {% bootstrap_javascript %}
 
+        <!-- To apply active class -->
+        <script>
+            document.querySelector(`a[href^='${location.pathname.split('/'[1])}']`).className += ' active'
+        </script>
+
         {% if messages %}
             <!-- To close alert messages automatically -->
             <script>

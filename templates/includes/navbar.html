@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="ToDo App Navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="#">
       <img src="{% static 'tasks/img/logo.png' %}" alt="Logo" width="24" class="d-inline-block align-text-top">
       <span class="">ToDo List</span>
     </a>
@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>            
+            <a class="nav-link" href="{%url 'tasks:index' %}">Home</a>            
         </li>
         {% if request.user.is_authenticated %}
           <li class="nav-item">
